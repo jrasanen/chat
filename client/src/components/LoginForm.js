@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './LoginForm.css'
+import './LoginForm.scss'
 
 import {
   Field,
@@ -10,9 +10,18 @@ class LoginForm extends Component {
   render() {
     var {handleSubmit, submitting, submitFailed} = this.props
     return (
-      <form onSubmit={handleSubmit} className='LoginForm'>
+      <form method="post" onSubmit={handleSubmit} className='LoginForm'>
+        <label>
+          Username
+        </label>
         <Field name='username' component='input' type='text' />
-        <button type='submit' disabled={submitting} className='LoginForm-submit-button'>Kirjaudu</button>
+
+        <label>
+          Password
+        </label>
+        <Field name='password' component='input' type='password' />
+
+        <button type='submit' disabled={submitting} className='success button'>Kirjaudu</button>
 
         {!submitting && submitFailed &&
           <div className='LoginForm-error'>Kirjautuminen ei onnistunut, tarkista käyttäjänimi!</div>
